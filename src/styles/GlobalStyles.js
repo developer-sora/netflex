@@ -1,7 +1,6 @@
-import React from "react";
+import { createGlobalStyle } from "styled-components";
+import reset from "styled-reset";
 
-function GlobalStyles() {
-  return <div></div>;
-}
-
-export default GlobalStyles;
+export const GlobalStyles = createGlobalStyle`
+  ${reset}
+  `;
