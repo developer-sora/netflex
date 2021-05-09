@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import styled, { css, keyframes } from 'styled-components';
+import React, { useState } from "react";
+import styled, { css, keyframes } from "styled-components";
 
 function Header() {
   const [clicked, setClicked] = useState(false);
@@ -17,20 +17,20 @@ function Header() {
       <HeaderRight>
         <i
           onClick={() => setClicked(!clicked)}
-          className='fas fa-search'
-          style={{ color: 'white' }}
+          className="fas fa-search"
+          style={{ color: "white" }}
         ></i>
         <SearchInput
           openSearchBox={clicked === true}
-          placeholder='제목,사람,장르'
+          placeholder="제목,사람,장르"
         ></SearchInput>
         <i
-          className='fas fa-bell'
-          style={{ color: 'white', margin: '0px 20px' }}
+          className="fas fa-bell"
+          style={{ color: "white", margin: "0px 20px" }}
         ></i>
         <i
-          className='fas fa-bars'
-          style={{ color: 'white', marginRight: '20px' }}
+          className="fas fa-bars"
+          style={{ color: "white", marginRight: "20px" }}
         ></i>
       </HeaderRight>
     </HeaderWrapper>
@@ -44,6 +44,8 @@ const HeaderWrapper = styled.header`
   display: flex;
   justify-content: space-between;
   height: 68px;
+  position: sticky;
+  top: 0;
 `;
 
 const HeaderLeft = styled.ul`
