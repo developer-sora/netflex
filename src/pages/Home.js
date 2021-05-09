@@ -1,7 +1,15 @@
-import React from 'react';
+import React from "react";
+import styled from "styled-components";
+import Header from "../components/Header";
 
-function home() {
-  return <div></div>;
+function Home() {
+  return (
+    <HomeWrapper>
+      <Header />
+    </HomeWrapper>
+  );
 }
 
-export default home;
+export default Home;
+
+const HomeWrapper = styled.div``;
