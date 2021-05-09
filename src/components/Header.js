@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 function Header() {
   const [clicked, setClicked] = useState(false);
@@ -55,7 +55,7 @@ const HeaderLogo = styled.li`
   color: red;
   font-weight: bold;
   font-size: 27px;
-  margin: 0px 30px 0px 50px;
+  margin: 0 30px 0 50px;
 `;
 
 const HeaderList = styled.li`
@@ -77,21 +77,26 @@ const HeaderRight = styled.div`
 
 // const dropDown = keyframes`
 // from{
-//   transition: width 1s ease 0.5s;
+//   transform: translate(0px, 0px);
 // }
 
 // to {
-//   transition: width 1s ease 0.5s;
+//   transform: translate(-265px, 0px);
 // }
 // `;
 
 const SearchInput = styled.input`
-  display: ${(props) => (props.openSearchBox ? 'block' : 'none')};
-  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+  display: none;
+
   background-color: black;
   border: 1px solid #e5e5e5;
   height: 36px;
   width: 265px;
-
   padding-left: 15px;
+  ${(props) =>
+    props.openSearchBox &&
+    css`
+      transition: 0.8s;
+      display: block;
+    `};
 `;
