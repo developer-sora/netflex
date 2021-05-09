@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Header from "../components/Header";
-import HomeContents from "./HomeContents/HomeContents";
-
+import HomeContents from "../pages/HomeContents/HomeContents";
 function Home() {
   return (
     <HomeWrapper>
