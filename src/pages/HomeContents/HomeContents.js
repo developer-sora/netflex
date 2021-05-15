@@ -31,7 +31,7 @@ export default HomeContents;
 const HomeContentsWrapper = styled.section``;
 
 const MainContents = styled.div`
-  background-image: url("images/main.jpg");
+  background-image: url("https://occ-0-2218-3996.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABWpf6NV0NBWGwkJ_JoSz8LL4klob7_D_zFdF21KKg3nkR7xHug6K-GQvLGfm39JLE0MbyMTgShfnFeHNxUjwVLslwrzc.webp?r=511");
   width: 100%;
   height: 100vh;
   background-repeat: no-repeat;
@@ -55,7 +55,7 @@ const Synopsis = styled.div`
 `;
 
 const TopTen = styled.div`
-  border: 1px solid red;
+  border: 0px solid red;
   height: 30vh;
 `;
 const RisingContents = styled.div``;
