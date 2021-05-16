@@ -1,25 +1,53 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 function HomeContents() {
+  const apikey = '93b66484d69a9c74634ef4f9ba6f885e';
+  const baseUrl = 'https://api.themoviedb.org/3/movie/';
+  const imgbaseUrl = 'https://image.tmdb.org/t/p/w500';
+  const [popular, setPopular] = useState();
+  useEffect(() => {
+    fetchHomeData();
+  }, []);
+
+  const fetchHomeData = async () => {
+    try {
+      const jsonData = await axios.request({
+        method: 'GET',
+        url: `${baseUrl}popular?api_key=${apikey}&language=ko-KR`,
+      });
+      setPopular(jsonData.data.results);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  console.log(popular);
   return (
     <HomeContentsWrapper>
       <MainContents>
         <MainInfo>
           <MainInfoText>
-            <img src='https://occ-0-2218-3996.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABSILQAwj_IfGmi7azA8CFEIxyW7TeAhcdEnWJUc71gaPUP76AU_XK5plbz1o7qdHoyKdUeNaf9jw2kZm4oi8SJaRWvePWAE7swJt.webp?r=a5a'></img>
-            <Synopsis>
-              풍선으로 날기, 낙하산 없이 점프하기, 케이블카 사이로 걷기. 묘기에
-              미친 사람들의 신박한 도전들. 무모해 보여도 나름 과학까지
-              동원한단다. 그래도 절대 따라 하진 말 것!
-            </Synopsis>
-
+            <img
+              src='https://occ-0-2218-3996.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABSILQAwj_IfGmi7azA8CFEIxyW7TeAhcdEnWJUc71gaPUP76AU_XK5plbz1o7qdHoyKdUeNaf9jw2kZm4oi8SJaRWvePWAE7swJt.webp?r=a5a'
+              alt='thumbnail'
+            ></img>
+            <Synopsis>{popular && popular[0].overview}</Synopsis>
             <PlayButton>▶ 재생</PlayButton>
             <InfoButton>상세정보</InfoButton>
           </MainInfoText>
         </MainInfo>
-        <TopTen></TopTen>
       </MainContents>
+      <TopTen>
+        {popular?.map((data, idx) => {
+          if (idx < 6)
+            return (
+              <PopularImages key={idx}>
+                <img src={`${imgbaseUrl}${data.backdrop_path}`} alt=''></img>
+              </PopularImages>
+            );
+        })}
+      </TopTen>
 
       <RisingContents></RisingContents>
     </HomeContentsWrapper>
@@ -28,6 +56,11 @@ function HomeContents() {
 
 export default HomeContents;
 
+const PopularImages = styled.div`
+  > img {
+    width: 315px;
+  }
+`;
 const HomeContentsWrapper = styled.section``;
 
 const MainContents = styled.div`
@@ -35,7 +68,7 @@ const MainContents = styled.div`
   width: 100%;
   height: 100vh;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100%;
 `;
 const MainInfo = styled.div`
   height: 70%;
@@ -52,11 +85,14 @@ const Synopsis = styled.div`
   font-size: 27px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   padding: 25px 0 0 0;
+  line-height: 1.25;
 `;
 
 const TopTen = styled.div`
-  border: 0px solid red;
-  height: 30vh;
+  position: absolute;
+  bottom: 0px;
+  z-index: 1;
+  display: flex;
 `;
 const RisingContents = styled.div``;
 
