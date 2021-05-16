@@ -6,7 +6,6 @@ import HomeContents from '../pages/HomeContents/HomeContents';
 function Home() {
   return (
     <HomeWrapper>
-      <Header />
       <HomeContents />
     </HomeWrapper>
   );
