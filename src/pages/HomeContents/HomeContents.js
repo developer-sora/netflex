@@ -1,11 +1,11 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
 function HomeContents() {
-  const apikey = "93b66484d69a9c74634ef4f9ba6f885e";
-  const baseUrl = "https://api.themoviedb.org/3/movie/";
-  const imgbaseUrl = "https://image.tmdb.org/t/p/w500";
+  const apikey = '93b66484d69a9c74634ef4f9ba6f885e';
+  const baseUrl = 'https://api.themoviedb.org/3/movie/';
+  const imgbaseUrl = 'https://image.tmdb.org/t/p/w500';
   const [popular, setPopular] = useState();
   useEffect(() => {
     fetchHomeData();
@@ -14,7 +14,7 @@ function HomeContents() {
   const fetchHomeData = async () => {
     try {
       const jsonData = await axios.request({
-        method: "GET",
+        method: 'GET',
         url: `${baseUrl}popular?api_key=${apikey}&language=ko-KR`,
       });
       setPopular(jsonData.data.results);
@@ -29,8 +29,8 @@ function HomeContents() {
         <MainInfo>
           <MainInfoText>
             <img
-              src="https://occ-0-2218-3996.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABSILQAwj_IfGmi7azA8CFEIxyW7TeAhcdEnWJUc71gaPUP76AU_XK5plbz1o7qdHoyKdUeNaf9jw2kZm4oi8SJaRWvePWAE7swJt.webp?r=a5a"
-              alt="thumbnail"
+              src='https://occ-0-2218-3996.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABSILQAwj_IfGmi7azA8CFEIxyW7TeAhcdEnWJUc71gaPUP76AU_XK5plbz1o7qdHoyKdUeNaf9jw2kZm4oi8SJaRWvePWAE7swJt.webp?r=a5a'
+              alt='thumbnail'
             ></img>
             <Synopsis>{popular && popular[0].overview}</Synopsis>
             <PlayButton>▶ 재생</PlayButton>
@@ -43,7 +43,7 @@ function HomeContents() {
           if (idx < 6)
             return (
               <PopularImages key={idx}>
-                <img src={`${imgbaseUrl}${data.backdrop_path}`} alt=""></img>
+                <img src={`${imgbaseUrl}${data.backdrop_path}`} alt=''></img>
               </PopularImages>
             );
         })}
@@ -64,7 +64,7 @@ const PopularImages = styled.div`
 const HomeContentsWrapper = styled.section``;
 
 const MainContents = styled.div`
-  background-image: url("https://occ-0-2218-3996.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABWpf6NV0NBWGwkJ_JoSz8LL4klob7_D_zFdF21KKg3nkR7xHug6K-GQvLGfm39JLE0MbyMTgShfnFeHNxUjwVLslwrzc.webp?r=511");
+  background-image: url('https://occ-0-2218-3996.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABWpf6NV0NBWGwkJ_JoSz8LL4klob7_D_zFdF21KKg3nkR7xHug6K-GQvLGfm39JLE0MbyMTgShfnFeHNxUjwVLslwrzc.webp?r=511');
   width: 100%;
   height: 100vh;
   background-repeat: no-repeat;
