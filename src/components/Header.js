@@ -77,7 +77,7 @@ function Header() {
 export default Header;
 
 const HeaderWrapper = styled.header`
-  background-color: black;
+  background-color: transparent;
   display: flex;
   justify-content: space-between;
   height: 68px;

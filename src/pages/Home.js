@@ -7,7 +7,6 @@ function Home() {
   const [saveIndex, setSaveIndex] = useState();
   return (
     <HomeWrapper>
-      <Header />
       <HomeContents />
     </HomeWrapper>
   );
