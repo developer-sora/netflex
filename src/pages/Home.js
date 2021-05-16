@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import Header from "../components/Header";
-import HomeContents from "../pages/HomeContents/HomeContents";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import Header from '../components/Header';
+import HomeContents from '../pages/HomeContents/HomeContents';
 
 function Home() {
-  const [saveIndex, setSaveIndex] = useState();
   return (
     <HomeWrapper>
       <HomeContents />

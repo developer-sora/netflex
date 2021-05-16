@@ -1,52 +1,75 @@
-import React, { useState } from "react";
-import styled, { css, keyframes } from "styled-components";
-import { useLocation, useHistory } from "react-router-dom";
+import React, { useState, useRef, useEffect } from 'react';
+import styled, { css } from 'styled-components';
+import { useLocation, useHistory } from 'react-router-dom';
 
 function Header() {
   const [clicked, setClicked] = useState(false);
-  console.log(clicked);
+
+  const [navBackground, setNavBackground] = useState(false);
+  const navRef = useRef();
+  navRef.current = navBackground;
+  useEffect(() => {
+    const handleScroll = () => {
+      const show = window.scrollY > 50;
+      if (navRef.current !== show) {
+        setNavBackground(show);
+      }
+    };
+    document.addEventListener('scroll', handleScroll);
+    return () => {
+      document.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   const pathName = useLocation().pathname;
   let history = useHistory();
   const menus = [
-    { name: "홈", path: "/" },
-    { name: "TV프로그램", path: "/tv" },
-    { name: "영화", path: "/movie" },
-    { name: "NEW 요즘 대세 콘텐츠", path: "/new" },
-    { name: "내가 찜한 콘텐츠", path: "/zzim" },
+    { name: '홈', path: '/' },
+    { name: 'TV프로그램', path: '/tv' },
+    { name: '영화', path: '/movie' },
+    { name: 'NEW 요즘 대세 콘텐츠', path: '/new' },
+    { name: '내가 찜한 콘텐츠', path: '/zzim' },
   ];
   return (
-    <HeaderWrapper>
+    <HeaderWrapper
+      expand='sm'
+      fixed='top'
+      style={{
+        transition: '1s ease',
+        backgroundColor: navBackground ? 'black' : 'transparent',
+      }}
+    >
       <HeaderLeft>
         <HeaderLogo onClick={() => history.push(menus[0].path)}>
           NETFLEX
         </HeaderLogo>
         <HeaderList
           onClick={() => history.push(menus[0].path)}
-          isActive={pathName === "/"}
+          isActive={pathName === '/'}
         >
           {menus[0].name}
         </HeaderList>
         <HeaderList
           onClick={() => history.push(menus[1].path)}
-          isActive={pathName === "/tv"}
+          isActive={pathName === '/tv'}
         >
           {menus[1].name}
         </HeaderList>
         <HeaderList
           onClick={() => history.push(menus[2].path)}
-          isActive={pathName === "/movie"}
+          isActive={pathName === '/movie'}
         >
           {menus[2].name}
         </HeaderList>
         <HeaderList
           onClick={() => history.push(menus[3].path)}
-          isActive={pathName === "/new"}
+          isActive={pathName === '/new'}
         >
           {menus[3].name}
         </HeaderList>
         <HeaderList
           onClick={() => history.push(menus[4].path)}
-          isActive={pathName === "/zzim"}
+          isActive={pathName === '/zzim'}
         >
           {menus[4].name}
         </HeaderList>
@@ -54,20 +77,20 @@ function Header() {
       <HeaderRight>
         <i
           onClick={() => setClicked(!clicked)}
-          className="fas fa-search"
-          style={{ color: "white" }}
+          className='fas fa-search'
+          style={{ color: 'white' }}
         ></i>
         <SearchInput
           openSearchBox={clicked === true}
-          placeholder="제목,사람,장르"
+          placeholder='제목,사람,장르'
         ></SearchInput>
         <i
-          className="fas fa-bell"
-          style={{ color: "white", margin: "0px 20px" }}
+          className='fas fa-bell'
+          style={{ color: 'white', margin: '0px 20px' }}
         ></i>
         <i
-          className="fas fa-bars"
-          style={{ color: "white", marginRight: "20px" }}
+          className='fas fa-bars'
+          style={{ color: 'white', marginRight: '20px' }}
         ></i>
       </HeaderRight>
     </HeaderWrapper>
@@ -77,7 +100,6 @@ function Header() {
 export default Header;
 
 const HeaderWrapper = styled.header`
-  background-color: transparent;
   display: flex;
   justify-content: space-between;
   height: 68px;
