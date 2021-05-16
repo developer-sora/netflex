@@ -73,6 +73,7 @@ const InfoDetails = styled.div`
   align-items: flex-start;
   padding: 0 0 0 50px;
   color: white;
+  line-height: 1.25;
   > img {
     margin-bottom: 50px;
   }

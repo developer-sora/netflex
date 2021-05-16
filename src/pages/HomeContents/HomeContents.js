@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 function HomeContents() {
   return (
@@ -7,7 +7,7 @@ function HomeContents() {
       <MainContents>
         <MainInfo>
           <MainInfoText>
-            <img src="https://occ-0-2218-3996.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABSILQAwj_IfGmi7azA8CFEIxyW7TeAhcdEnWJUc71gaPUP76AU_XK5plbz1o7qdHoyKdUeNaf9jw2kZm4oi8SJaRWvePWAE7swJt.webp?r=a5a"></img>
+            <img src='https://occ-0-2218-3996.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABSILQAwj_IfGmi7azA8CFEIxyW7TeAhcdEnWJUc71gaPUP76AU_XK5plbz1o7qdHoyKdUeNaf9jw2kZm4oi8SJaRWvePWAE7swJt.webp?r=a5a'></img>
             <Synopsis>
               풍선으로 날기, 낙하산 없이 점프하기, 케이블카 사이로 걷기. 묘기에
               미친 사람들의 신박한 도전들. 무모해 보여도 나름 과학까지
@@ -31,7 +31,7 @@ export default HomeContents;
 const HomeContentsWrapper = styled.section``;
 
 const MainContents = styled.div`
-  background-image: url("https://occ-0-2218-3996.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABWpf6NV0NBWGwkJ_JoSz8LL4klob7_D_zFdF21KKg3nkR7xHug6K-GQvLGfm39JLE0MbyMTgShfnFeHNxUjwVLslwrzc.webp?r=511");
+  background-image: url('https://occ-0-2218-3996.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABWpf6NV0NBWGwkJ_JoSz8LL4klob7_D_zFdF21KKg3nkR7xHug6K-GQvLGfm39JLE0MbyMTgShfnFeHNxUjwVLslwrzc.webp?r=511');
   width: 100%;
   height: 100vh;
   background-repeat: no-repeat;
