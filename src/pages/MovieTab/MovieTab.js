@@ -93,8 +93,9 @@ const PopularContents = styled.div`
   > span {
     color: rgba(255, 255, 255, 0.6);
     font-size: 25px;
+    cursor: pointer;
     :hover {
-      opacity: 1;
+      color: white;
     }
     :nth-child(1) {
       margin-left: 50px;
@@ -189,6 +190,7 @@ const ButtonBox = styled.div`
     background-color: white;
     border-radius: 300px;
     margin-right: 20px;
+    cursor: pointer;
     :hover {
       opacity: 0.8;
     }
