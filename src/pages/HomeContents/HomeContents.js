@@ -42,6 +42,15 @@ function HomeContents() {
   const baseUrl = "https://api.themoviedb.org/3/movie/";
   const imgbaseUrl = "https://image.tmdb.org/t/p/w500";
   const [popular, setPopular] = useState();
+  const genre = [
+    "최신 등록 콘텐츠",
+    "지금 뜨는 콘텐츠",
+    "시청 중인 콘텐츠",
+    "내가 찜한 콘텐츠",
+    "오늘의 한국 TOP 10 콘텐츠",
+    "넷플릭스 오리지널",
+  ];
+  const moviesType = { 0: "popular", 1: "top_rated", 2: "now_playing" };
 
   const settings = {
     dots: true,
@@ -63,7 +72,7 @@ function HomeContents() {
     try {
       const jsonData = await axios.request({
         method: "GET",
-        url: `${baseUrl}popular?api_key=${apikey}&language=ko-KR`,
+        url: `${baseUrl}${moviesType[2]}?api_key=${apikey}&language=ko-KR`,
       });
       setPopular(jsonData.data.results);
     } catch (e) {
@@ -89,26 +98,28 @@ function HomeContents() {
             </InfoButton>
           </MainInfoText>
         </MainInfo>
-        <TopTen>
-          <TopTenText>최신 등록 콘텐츠</TopTenText>
-          <PopularImages>
-            <Slider {...settings}>
-              {popular?.map((data, idx) => {
-                if (idx < 18)
-                  return (
-                    <PopularData
-                      key={idx}
-                      src={`${imgbaseUrl}${data.backdrop_path}`}
-                      alt=""
-                    ></PopularData>
-                  );
-              })}
-            </Slider>
-          </PopularImages>
-        </TopTen>
+        {genre?.map((name, idx) => {
+          return (
+            <TopTen key={idx}>
+              <TopTenText>{name}</TopTenText>
+              <PopularImages>
+                <Slider {...settings}>
+                  {popular?.map((data, idx) => {
+                    if (idx < 18)
+                      return (
+                        <PopularData
+                          key={idx}
+                          src={`${imgbaseUrl}${data.backdrop_path}`}
+                          alt=""
+                        ></PopularData>
+                      );
+                  })}
+                </Slider>
+              </PopularImages>
+            </TopTen>
+          );
+        })}
       </MainContents>
-
-      <RisingContents></RisingContents>
     </HomeContentsWrapper>
   );
 }
@@ -146,6 +157,7 @@ const MainContents = styled.div``;
 const MainInfo = styled.div`
   height: 70%;
   padding: 100px 0 0 50px;
+  margin-bottom: 350px;
 `;
 
 const MainInfoText = styled.div`
@@ -164,7 +176,7 @@ const Synopsis = styled.div`
 const TopTen = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 350px;
+  margin-top: 55px;
 `;
 
 const TopTenText = styled.div`
