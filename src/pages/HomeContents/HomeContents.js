@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Header from "../../components/Header";
 import Slider from "react-slick";
+import Footer from "../../components/Footer";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -68,11 +69,11 @@ function HomeContents() {
     fetchHomeData();
   }, []);
 
-  const fetchHomeData = async () => {
+  const fetchHomeData = async (idx) => {
     try {
       const jsonData = await axios.request({
         method: "GET",
-        url: `${baseUrl}${moviesType[2]}?api_key=${apikey}&language=ko-KR`,
+        url: `${baseUrl}${moviesType[0]}?api_key=${apikey}&language=ko-KR`,
       });
       setPopular(jsonData.data.results);
     } catch (e) {
@@ -80,6 +81,7 @@ function HomeContents() {
     }
   };
   console.log(popular);
+  const [state, setState] = useState();
 
   return (
     <HomeContentsWrapper>
@@ -94,14 +96,14 @@ function HomeContents() {
             <Synopsis>{popular && popular[0].overview}</Synopsis>
             <PlayButton>▶ 재생</PlayButton>
             <InfoButton>
-              <i class="fas fa-info-circle"></i> 상세정보
+              <i className="fas fa-info-circle"></i> 상세정보
             </InfoButton>
           </MainInfoText>
         </MainInfo>
         {genre?.map((name, idx) => {
           return (
             <TopTen key={idx}>
-              <TopTenText>{name}</TopTenText>
+              <TopTenText red={state}>{name}</TopTenText>
               <PopularImages>
                 <Slider {...settings}>
                   {popular?.map((data, idx) => {
@@ -120,6 +122,7 @@ function HomeContents() {
           );
         })}
       </MainContents>
+      <Footer></Footer>
     </HomeContentsWrapper>
   );
 }
@@ -145,11 +148,12 @@ const HomeContentsWrapper = styled.section`
   background: linear-gradient(77deg, rgba(0, 0, 0, 0.6) 0, rgba(0, 0, 0, 0) 85%),
     url("https://occ-0-2218-3996.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABXtAvb7sp66bv3HcJgl-ZpS72c-ZQ6sCTFpPFRSmB_ryszpXuYXrhG4V122JupsdaUDtYYJBSvA-GozUbeuEAmuite-H.webp?r=8dd");
   width: 100%;
-  min-height: 100vh;
+  min-height: 1000px;
   background-repeat: no-repeat;
   background-size: 100%;
   background-color: #141414;
-  padding-bottom: 40%;
+  padding-bottom: 15px;
+  margin-top: 0px;
 `;
 
 const MainContents = styled.div``;
@@ -180,6 +184,7 @@ const TopTen = styled.div`
 `;
 
 const TopTenText = styled.div`
+  color: {(props) => props.red ? 'red' : 'black'}
   color: rgba(255, 255, 255, 0.8);
   margin-left: 60px;
   font-size: 28px;

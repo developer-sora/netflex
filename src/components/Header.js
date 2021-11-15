@@ -123,7 +123,9 @@ const HeaderLogo = styled.li`
 `;
 
 const HeaderList = styled.li`
+  transition: all ease 2s 0s;
   color: rgba(255, 255, 255, 0.7);
+  transition: color 0.4s;
   font-size: 13px;
   margin: 0px 10px;
   cursor: pointer;

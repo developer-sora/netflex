@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import Header from '../../components/Header';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import Header from "../../components/Header";
+import axios from "axios";
 
 function MovieTab() {
-  const apikey = '93b66484d69a9c74634ef4f9ba6f885e';
-  const baseUrl = 'https://api.themoviedb.org/3/movie/';
-  const imgbaseUrl = 'https://image.tmdb.org/t/p/w500';
+  const apikey = "93b66484d69a9c74634ef4f9ba6f885e";
+  const baseUrl = "https://api.themoviedb.org/3/movie/";
+  const imgbaseUrl = "https://image.tmdb.org/t/p/w500";
   const [popular, setPopular] = useState();
 
   const category = [
-    '외국영화',
-    '한국영화',
-    'SF영화',
-    '호러영화',
-    '인디',
-    '코미디',
+    "외국영화",
+    "한국영화",
+    "SF영화",
+    "호러영화",
+    "인디",
+    "코미디",
   ];
   useEffect(() => {
     fetchHomeData();
@@ -24,7 +24,7 @@ function MovieTab() {
   const fetchHomeData = async () => {
     try {
       const jsonData = await axios.request({
-        method: 'GET',
+        method: "GET",
         url: `${baseUrl}popular?api_key=${apikey}&language=ko-KR`,
       });
       setPopular(jsonData.data.results);
@@ -45,8 +45,8 @@ function MovieTab() {
           </InfoNavs>
           <InfoDetails>
             <img
-              src='https://occ-0-3997-1009.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABYQxL7-LvFyci9tra1RpQsc568NDHoVqXKkkoBDVmBcxsEnyAMw1nKmFmXADx-n87qREetxjy-OGzvGrkZbctxCKpk9ZIH3UabV8.webp?r=bde'
-              alt='logo'
+              src="https://occ-0-3997-1009.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABYQxL7-LvFyci9tra1RpQsc568NDHoVqXKkkoBDVmBcxsEnyAMw1nKmFmXADx-n87qREetxjy-OGzvGrkZbctxCKpk9ZIH3UabV8.webp?r=bde"
+              alt="logo"
             />
             <label>오늘 대한민국에서 콘텐츠 순위 7위!</label>
             <span>
@@ -70,7 +70,7 @@ function MovieTab() {
                       <img
                         key={idx}
                         src={`${imgbaseUrl}${data.backdrop_path}`}
-                        alt=''
+                        alt=""
                       ></img>
                     );
                 })}
@@ -126,7 +126,7 @@ const MovieTabWrapper = styled.div`
       rgba(0, 0, 0, 0.6) 0,
       rgba(0, 0, 0, 0) 100%
     ),
-    url('https://oc2-0-3997-1009.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABePNzCW5GdynZcsQNItEdV_w5em8EdzTnV9L6_HNEbIxtu_FdlrkAK5s2JZwDuSE0YcuYfESsnRSVtHAX0OFsfG9ydUy.webp?r=aa5');
+    url("https://oc2-0-3997-1009.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABePNzCW5GdynZcsQNItEdV_w5em8EdzTnV9L6_HNEbIxtu_FdlrkAK5s2JZwDuSE0YcuYfESsnRSVtHAX0OFsfG9ydUy.webp?r=aa5");
   background-size: 100%;
   background-repeat: no-repeat;
   min-height: 100vh;
@@ -188,7 +188,7 @@ const ButtonBox = styled.div`
     color: black;
     font-weight: bold;
     background-color: white;
-    border-radius: 300px;
+    border-radius: 10px;
     margin-right: 20px;
     cursor: pointer;
     :hover {
